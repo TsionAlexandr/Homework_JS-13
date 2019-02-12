@@ -3,9 +3,12 @@
 
 
 function promiseCreator(time, val) {
-    if (tipeof(val) !== 'string' || tipeof(time) !== 'number') {
-        console.error('Значение не передано');
-    }
+    if (!val || !time) {
+      console.error('Значение не передано');
+    } else if (tipeof(val) !== 'string' || tipeof(time) !== 'number') {
+      console.error('Передано невреное значение')    
+    };
+    
     return new Promise((out) => {
         setTimeout(() => { out(val) } , time);
     });
